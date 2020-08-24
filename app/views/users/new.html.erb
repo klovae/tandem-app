@@ -3,45 +3,8 @@
 
 <%= form_for @user do |f| %>
 <table>
-<tr>
-    <td class="col-1">
-        <%= f.label :email %>
-    </td>
 
-    <td class="textbox">
-        <%= f.text_field :email %>
-    </td>
-</tr>
-
-<tr>
-    <td class="col-1">
-        <%= f.label :first_name %>
-    </td>
-
-    <td class="textbox">
-        <%= f.text_field :first_name %>
-    </td>
-</tr>
-
-<tr>
-    <td class="col-1">
-        <%= f.label :last_name %>
-    </td>
-
-    <td class="textbox">
-        <%= f.text_field :last_name %>
-    </td>
-</tr>
-
-<tr>
-    <td class="col-1">
-        <%= f.label :time_zone %>
-    </td>
-
-    <td class="textbox">
-        <%= f.time_zone_select :time_zone %>
-    </td>
-</tr>
+<%= render partial: 'form', locals: { f: f } %>
 
 <tr>
     <td class="col-1">
