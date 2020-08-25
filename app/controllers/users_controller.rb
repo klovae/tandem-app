@@ -5,6 +5,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+    if @user.save
+        flash[:success] = "Account created successfully. Welcome to Tandem!"
+        redirect_to welcome_path
+    else
+        flash[:errors] = @user.errors.full_messages
+        render :new
+    end
 
   end
 
@@ -15,7 +23,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :time_zone)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :timezone)
   end
 
 end

@@ -1,0 +1,18 @@
+<% if flash[:success] %>
+    <div class="success-message">
+        <%= flash[:success] %>
+    </div>
+<% elsif flash[:error] %>
+    <div class="error-message">
+    <%= flash[:error] %>
+    </div>
+<% elsif flash[:errors] %>
+    <div class="error-message">
+        <p>Could not save your information for the following <%= "reason".pluralize(flash.now[:errors].count) %>:</p>
+        <ul>
+        <% flash.now[:errors].each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
