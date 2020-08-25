@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :projects
 
+  resources :permissions, only: [:index, :show, :edit, :update]
+
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
