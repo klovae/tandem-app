@@ -1,0 +1,35 @@
+<h1>Log In!</h1>
+
+<%= render partial: '/layouts/flash_message_center'%>
+
+<%= form_tag sessions_path %>
+<table>
+<tr>
+<td class="col-1">
+    <label for="email">Email</label>
+</td>
+
+<td class="textbox">
+    <%= text_field_tag 'email' %>
+</td>
+</tr>
+
+<tr>
+<td class="col-1">
+    <label for="password">Password</label>
+</td>
+
+<td class="textbox">
+    <%= password_field_tag 'password' %>
+</td>
+</tr>
+</table>
+
+
+<%= submit_tag "Log In"%>
+
+
+
+<p>
+<%= link_to "Don't have an account? Create one here", new_user_path %>
+</p>

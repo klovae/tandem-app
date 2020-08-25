@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
+  resources :sessions, only: [:create]
   get '/login', to: 'sessions#new'
+  get '/logout', to: 'sessions#destroy'
 
   get '/welcome', to: 'static#welcome'
   get '/about', to: 'static#about'
