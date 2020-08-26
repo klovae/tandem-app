@@ -1,0 +1,21 @@
+<h1>Start a Project</h1>
+
+<%= form_with(model: @project) do |f| %>
+
+<label for="title">Title</label><br>
+<div class="field">
+<%= f.text_field :title %>
+</div>
+
+<label for="description">Description</label><br>
+<div class="field">
+<%= f.text_area :description %>
+</div>
+
+<label for="deadline">Goal Date</label><br>
+<div class="field">
+<%= f.date_select :deadline, min: Time.zone.today %>
+</div>
+
+<%= f.submit %>
+<% end %>
