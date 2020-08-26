@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :projects
 
+  resources :tasks
+
   resources :permissions, only: [:index, :show, :edit, :update]
 
   resources :sessions, only: [:create]
