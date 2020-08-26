@@ -20,20 +20,31 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
   def edit
+    set_task
+    @project = @task.project
   end
 
   def update
+    set_task
+    if @task.update(task_params)
+      flash[:success] = "Task updated."
+      redirect_to project_path(@task.project)
+    else
+      flash[:errors] = @task.errors.full_messages
+      render :edit
+    end
+
   end
 
   def destroy
   end
 
   private
+
+  def set_task
+    @task = Task.find_by_id(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:content, :deadline, :project_id, :parent_id)

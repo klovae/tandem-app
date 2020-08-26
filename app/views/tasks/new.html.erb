@@ -2,17 +2,10 @@
 
 <%= form_with(model: @task) do |f| %>
 
-  <div class="field">
-  <%= f.text_field :content %>
-  </div>
-
-  <label for="deadline">Goal Date</label><br>
-  <div class="field">
-  <%= f.date_select :deadline, min: Time.zone.today %>
-  </div>
+  <%= render partial: 'form', locals: {f: f} %>
 
   <%= f.hidden_field :project_id, value: @project.id %>
 
   <%= f.submit "Add Task"%>
 
-  <% end %>
+<% end %>

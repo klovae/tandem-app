@@ -1,4 +1,5 @@
 <h1><%= @project.title %></h1>
+<%= @project.description %></p>
 <p>Project Owners:</p>
 <ul>
 <% @owners.each do |owner| %>
@@ -7,20 +8,23 @@
 </ul>
 <p>Due date: <%= @project.human_time %></p>
 
-<p>Description: <%= @project.description %></p>
-
 <h2>Tasks</h2>
 
 <%= link_to "Add a task", new_project_task_path(@project) %>
 
 <table>
 <tr>
+<th></th>
 <th>Task</th>
 <th>Deadline</th>
 </tr>
 
 <% @tasks.each do |t| %>
   <tr>
+    <td>
+    <%= link_to "Edit", edit_project_task_path(t, @project) %>
+    </td>
+
     <td>
     <%= t.content %>
     </td>
