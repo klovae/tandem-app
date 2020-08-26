@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :projects
+  resources :projects do
+    resources :tasks, only: [:new, :edit]
+  end
 
-  resources :tasks
+  resources :tasks, only: [:index, :create, :update, :destroy]
 
   resources :permissions, only: [:index, :show, :edit, :update]
 

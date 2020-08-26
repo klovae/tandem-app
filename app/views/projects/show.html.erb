@@ -8,3 +8,26 @@
 <p>Due date: <%= @project.human_time %></p>
 
 <p>Description: <%= @project.description %></p>
+
+<h2>Tasks</h2>
+
+<%= link_to "Add a task", new_project_task_path(@project) %>
+
+<table>
+<tr>
+<th>Task</th>
+<th>Deadline</th>
+</tr>
+
+<% @tasks.each do |t| %>
+  <tr>
+    <td>
+    <%= t.content %>
+    </td>
+
+    <td>
+    <%= t.human_time%>
+    </td>
+  </tr>
+<% end %>
+</table>

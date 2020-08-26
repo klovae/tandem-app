@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   def show
     find_project
     @owners = @project.owners
+    @tasks = @project.tasks
   end
 
   def edit
