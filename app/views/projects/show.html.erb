@@ -1,4 +1,10 @@
 <h1><%= @project.title %></h1>
-<p><%= @project.deadline.strftime %></p>
+<p>Project Owners:</p>
+<ul>
+<% @owners.each do |owner| %>
+  <li><%= owner.full_name%></li>
+<% end %>
+</ul>
+<p>Due date: <%= @project.human_time %></p>
 
-<p><%= @project.description %></p>
+<p>Description: <%= @project.description %></p>
