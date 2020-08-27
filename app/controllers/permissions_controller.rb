@@ -1,7 +1,7 @@
 class PermissionsController < ApplicationController
   
   def index
-    @project = Project.find_by_id(params[:id])
+    @project = Project.find_by_id(params[:project_id])
     @collaborators = @project.all_collaborators
   end
 
