@@ -1,0 +1,33 @@
+<h1>Your Projects</h1>
+<table>
+<th>
+Project
+</th>
+<th>
+Deadline
+</th>
+<th>
+Role
+</th>
+<% @user_projects.each do |project| %>
+  <tr>
+  <td>
+  <%= link_to project[0].title, project_path(project[0]) %>
+  </td>
+  
+  <td>
+  <%= project[0].deadline %>
+  </td>
+  
+  <td>
+  <%= project[1].titlecase %>  
+  </td>
+
+  </tr>
+
+<% end %>
+</table>
+
+<p>
+<%= link_to "Create a new project", new_project_path %>
+</p>

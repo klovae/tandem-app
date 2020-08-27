@@ -15,7 +15,17 @@ class Project < ApplicationRecord
     owners
   end
 
+  def all_collaborators
+    collaborators = []
+    self.permissions.each do |collaborator|
+      collaborators << [collaborator.access_level, collaborator.user]
+    end
+    collaborators
+  end
+
+
   def human_time
     self.deadline.strftime("%A, %B %-d, %Y")
   end
+
 end

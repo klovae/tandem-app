@@ -14,7 +14,7 @@
 
 <label for="deadline">Goal Date</label><br>
 <div class="field">
-<%= f.date_select :deadline, min: Time.zone.today %>
+<%= f.date_field :deadline, min: Time.zone.today %>
 </div>
 
 <%= f.submit %>

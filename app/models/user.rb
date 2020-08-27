@@ -11,4 +11,14 @@ class User < ApplicationRecord
     self.first_name + " " + self.last_name
   end
 
+  def user_projects
+    projects = []
+    permissions = Permission.where(user_id: self.id)
+    permissions.each do |permission|
+      projects << [permission.project, permission.access_level]
+    end
+    projects
+  end
+
+
 end

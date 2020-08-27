@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks, only: [:new, :edit]
+    resources :permissions
   end
 
   resources :tasks, only: [:index, :create, :update, :destroy]
