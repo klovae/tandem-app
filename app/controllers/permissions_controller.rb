@@ -1,7 +1,7 @@
 class PermissionsController < ApplicationController
   
   def index
-    @project = Project.find_by_id(params[:project_id])
+    @project = Project.find_by(id: params[:project_id])
     @collaborators = @project.all_collaborators
     @permission = Permission.new
   end
@@ -9,7 +9,6 @@ class PermissionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:permission][:user_email])
     if @user
-      binding.pry
       @permission = Permission.new(permissions_params.except("user_email"))
       @permission.user_id = @user.id
       @permission.save
@@ -20,9 +19,13 @@ class PermissionsController < ApplicationController
   end
 
   def edit
+   
   end
 
   def update
+    @permission = Permission.find_by(id: params[:id])
+    @permission.update(permissions_params)
+    redirect_to project_path(@permission.project)
   end
 
   def destroy
@@ -31,7 +34,7 @@ class PermissionsController < ApplicationController
   private
 
   def permissions_params
-    params.require(:permission).permit(:project_id, :user_email, :creator_id, :access_level)
+    params.require(:permission).permit(:project_id, :user_email, :creator_id, :access_level, :accepted)
   end
 
 end

@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   def user_projects
     projects = []
-    permissions = Permission.where(user_id: self.id)
+    permissions = Permission.where(user_id: self.id, accepted: true)
     permissions.each do |permission|
       projects << [permission.project, permission.access_level]
     end
