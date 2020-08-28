@@ -31,7 +31,20 @@ Access Level
 <ol>
 <li>Make sure they have an account on Tandem</li>
 <li>Select a level of access to grant your new collaborator</li>
-<li>Enter their email and a custom message (optional) below to send an invite</li>
+<li>Enter their email below to send an invite</li>
 </ol> 
+<div>
+<%= form_with(model: @permission, url: [@project, @permission]) do |f| %>
+<label>Select Access Level: </label>
+<%= f.select :access_level, ["owner", "manager", "contributor"], prompt: true %>
+</div>
 
+<div>
+<label>Email: </label>
+<%= f.email_field :user_email %>
+</div>
+<%= f.hidden_field :project_id, value: @project.id %>
+<%= f.hidden_field :creator_id, value: current_user.id %>
 
+<%= f.submit "Invite Collaborator "%>
+<% end %>

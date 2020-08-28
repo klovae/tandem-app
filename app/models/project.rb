@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   has_many :tasks
 
   def set_owner(current_user)
-    Permission.create(project_id: self.id, user_id: current_user.id, access_level: "owner")
+    Permission.create(project_id: self.id, user_id: current_user.id, creator_id: current_user.id, access_level: "owner", accepted: true)
   end
 
   def owners
