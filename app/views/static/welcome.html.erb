@@ -1,3 +1,5 @@
 <%= render partial: '/layouts/flash_message_center' %>
 
-<p>Whatup, <%= current_user.first_name %>!</p>
+<% if @invitations %>
+<h2>You have <%= pluralize(@invitations.count, "invitation")%> to join a project!</h2>
+<% end %>
