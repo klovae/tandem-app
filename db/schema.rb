@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_010528) do
+ActiveRecord::Schema.define(version: 2020_08_30_190033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_assignments_on_task_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
 
   create_table "permissions", force: :cascade do |t|
     t.string "access_level"
@@ -37,11 +46,13 @@ ActiveRecord::Schema.define(version: 2020_08_28_010528) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "content"
-    t.date "deadline"
     t.bigint "project_id"
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "open"
+    t.datetime "deadline"
+    t.datetime "completion_date"
     t.index ["parent_id"], name: "index_tasks_on_parent_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
