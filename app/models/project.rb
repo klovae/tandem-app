@@ -15,10 +15,18 @@ class Project < ApplicationRecord
     owners
   end
 
-  def all_collaborators
+  def collaborators_with_access_level
     collaborators = []
-    self.permissions.each do |collaborator|
-      collaborators << [collaborator.access_level, collaborator.user]
+    self.permissions.each do |c|
+      collaborators << [c.user, c.access_level]
+    end
+    collaborators
+  end
+
+  def collaborators
+    collaborators = []
+    self.permissions.each do |c|
+      collaborators << c.user
     end
     collaborators
   end

@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   validates :content, presence: true
 
   belongs_to :project
+  has_one :assignment
 
   #self join
   has_many :subtasks, class_name: "Task", foreign_key: "parent_id"

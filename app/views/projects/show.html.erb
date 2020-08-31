@@ -20,6 +20,7 @@
 <th></th>
 <th>Task</th>
 <th>Deadline</th>
+<th>Assigned To</th>
 </tr>
 
 <% @tasks.each do |t| %>
@@ -36,6 +37,12 @@
     <% if t.deadline %>
       <%= t.human_time%>
     <% end %>
+    </td>
+
+    <td>
+      <% if t.assignment %>
+        <%= t.assignment.user.full_name %>
+      <% end %>
     </td>
   </tr>
 <% end %>

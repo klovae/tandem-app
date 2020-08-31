@@ -25,6 +25,8 @@ class ProjectsController < ApplicationController
   def show
     find_project
     @owners = @project.owners
+    @collaborator_list = @project.collaborators_with_access_level
+    @collaborators = @project.collaborators
     @tasks = @project.tasks
   end
 

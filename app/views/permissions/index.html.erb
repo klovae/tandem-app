@@ -11,16 +11,16 @@ Email
 <th>
 Access Level
 </th>
-<% @collaborators.each do |collaborator|%>
+<% @collaborator_list.each do |collaborator|%>
   <tr>
     <td>
-      <%= collaborator[1].full_name %>
+      <%= collaborator[0].full_name %>
     </td>
     <td>
-      <%= collaborator[1].email %>
+      <%= collaborator[0].email %>
     </td>
     <td>
-      <%= collaborator[0].titlecase %>
+      <%= collaborator[1].titlecase %>
     </td>
   </tr>
 <% end %>
