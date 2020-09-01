@@ -1,0 +1,34 @@
+<h1>All Tasks</h1>
+
+<table>
+<tr>
+<th></th>
+<th>Task</th>
+<th>Project</th>
+<th>Deadline</th>
+</tr>
+
+<% @tasks.each do |t| %>
+  <tr>
+    <td>
+    <%= link_to "Edit", edit_project_task_path(t.project, t) %>
+    </td>
+
+    <td>
+    <%= t.content %>
+    </td>
+
+    <td>
+    <%= t.project.title %> 
+    </td>
+
+    <td>
+    <% if t.deadline %>
+      <%= t.human_time%>
+    <% end %>
+    </td>
+  </tr>
+<% end %>
+
+</table>
+
