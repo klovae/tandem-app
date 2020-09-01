@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
     @collaborator_list = @project.collaborators_with_access_level
     @collaborators = @project.collaborators
     @tasks = @project.tasks
+    @assignment = Assignment.new
   end
 
   def edit

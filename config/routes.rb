@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :permissions
   end
 
+  resources :assignments
+
   resources :tasks, only: [:index, :create, :update, :destroy]
 
   resources :permissions, only: [:index, :show, :edit, :update]
