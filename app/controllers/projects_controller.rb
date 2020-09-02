@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
     @owners = @project.owners
     @collaborator_list = @project.collaborators_with_access_level
     @collaborators = @project.collaborators
+    @sections = Section.where(project_id: @project.id)
     @tasks = @project.tasks
     @assignment = Assignment.new
   end

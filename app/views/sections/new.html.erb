@@ -1,0 +1,18 @@
+<h1>Create a New Section</h1>
+
+<%= form_with(model: @section, url: [@project, @section]) do |f| %>
+  <div class='label'>
+    <label>Name:</label>
+  </div>
+
+  <div class='field'>
+  <%= f.text_field :name %>
+  </div>
+
+  <div class='field'>
+  <%= f.hidden_field :project_id, value: @project.id %>
+  </div>
+
+  <%= f.submit "Add section" %>
+
+<% end %>

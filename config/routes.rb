@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks, only: [:new, :edit]
     resources :permissions
+    resources :sections, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :assignments

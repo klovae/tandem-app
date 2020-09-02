@@ -13,43 +13,53 @@
 
 <h2>Tasks</h2>
 
-<%= link_to "Add a task", new_project_task_path(@project) %>
+<h4><%= link_to "Create a new section", new_project_section_path(@project) %></h4>
 
-<table>
-<tr>
-<th></th>
-<th>Task</th>
-<th>Deadline</th>
-<th>Assigned To</th>
-</tr>
+<h4><%= link_to "Add a task", new_project_task_path(@project) %></h4>
 
-<% @tasks.each do |t| %>
-  <tr>
-    <td>
-    <%= link_to "Edit", edit_project_task_path(@project, t) %>
-    </td>
 
-    <td>
-    <%= t.content %>
-    </td>
+<% @sections.each do |section| %>
+  <h3><%= section.name %></h3>
 
-    <td>
-    <% if t.deadline %>
-      <%= t.human_time%>
-    <% end %>
-    </td>
+  <% if section.tasks %>
 
-    <td>
-      <% if t.assignment %>
-        <%= t.assignment.user.full_name %>
-      <% else %>
-        <%= form_with model: @assignment, url: '/assignments' do |f| %>
-          <%= f.hidden_field :task_id, value: t.id %>
-          <%= f.collection_select :user_id, @collaborators, :id, :first_name %>
-          <%= f.submit "Assign" %>
+    <table>
+    <tr>
+    <th></th>
+    <th>Task</th>
+    <th>Deadline</th>
+    <th>Assigned To</th>
+    </tr>
+
+    <% section.tasks.each do |t| %>
+      <tr>
+        <td>
+        <%= link_to "Edit", edit_project_task_path(@project, t) %>
+        </td>
+
+        <td>
+        <%= t.content %>
+        </td>
+
+        <td>
+        <% if t.deadline %>
+          <%= t.human_time%>
         <% end %>
-      <% end %>
-    </td>
-  </tr>
+        </td>
+
+        <td>
+          <% if t.assignment %>
+            <%= t.assignment.user.full_name %>
+          <% else %>
+            <%= form_with model: @assignment, url: '/assignments' do |f| %>
+              <%= f.hidden_field :task_id, value: t.id %>
+              <%= f.collection_select :user_id, @collaborators, :id, :first_name %>
+              <%= f.submit "Assign" %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
 <% end %>
-</table>
