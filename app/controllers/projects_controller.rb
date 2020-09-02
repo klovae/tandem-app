@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
     @collaborator_list = @project.collaborators_with_access_level
     @collaborators = @project.collaborators
     @sections = Section.where(project_id: @project.id)
-    @tasks = @project.tasks
+    @loose_tasks = @project.tasks.where(section_id: nil)
     @assignment = Assignment.new
   end
 
