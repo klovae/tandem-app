@@ -1,39 +1,32 @@
-<tr>
-    <td class="col-1">
+
+    <div class="label">
         <%= f.label :email %>
-    </td>
+    </div>
 
-    <td class="textbox">
-        <%= f.text_field :email %>
-    </td>
-</tr>
+    <div class="field">
+        <%= f.email_field :email %>
+    </div>
 
-<tr>
-    <td class="col-1">
+    <div class="label">
         <%= f.label :first_name %>
-    </td>
+    </div>
 
-    <td class="textbox">
+    <div class="field">
         <%= f.text_field :first_name %>
-    </td>
-</tr>
+    </div>
 
-<tr>
-    <td class="col-1">
+    <div class="label">
         <%= f.label :last_name %>
-    </td>
+    </div>
 
-    <td class="textbox">
+    <div class="field">
         <%= f.text_field :last_name %>
-    </td>
-</tr>
+    </div>
 
-<tr>
-    <td class="col-1">
+    <div class="label">
         <%= f.label :timezone %>
-    </td>
+    </div>
 
-    <td class="textbox">
+    <div class="field">
         <%= f.time_zone_select :timezone %>
-    </td>
-</tr>
+    </div>

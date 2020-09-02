@@ -4,31 +4,25 @@
 <%= render partial: '/layouts/flash_message_center' %>
 
 <%= form_for @user do |f| %>
-<table>
+
 
 <%= render partial: 'form', locals: { f: f } %>
-
-<tr>
-    <td class="col-1">
+    <div class="label">
         <%= f.label :password %>
-    </td>
+    </div>
 
-    <td class="textbox">
+    <div class="field">
         <%= f.password_field :password %>
-    </td>
-</tr>
-
-<tr>
-    <td class="col-1">
+    </div>
+    <div class="label">
         <%= f.label :password_confirmation %>
-    </td>
+    </div>
 
-    <td class="textbox">
+    <div class="field">
         <%= f.password_field :password_confirmation %>
-    </td>
-</tr>
+    </div>
    
-</table>
+
  <%= f.submit "Create Account" %>
 <% end %>
 

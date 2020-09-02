@@ -12,8 +12,11 @@
 
   <body>
     <div id="all-wrapper">
+      <div id="header">
+        <img id="logo" src="/images/logo.png" alt="Tandem Logo">
+      </div>
       <div id="nav-wrap">
-      <img id="logo" src="/images/logo.png" alt="Tandem Logo">
+      
       <nav>
         <% if current_user %>
           <h3>LOGGED IN AS<br><strong><%= current_user.full_name.upcase %></strong></h3>
