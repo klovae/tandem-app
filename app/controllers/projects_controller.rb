@@ -18,9 +18,6 @@ class ProjectsController < ApplicationController
       flash.now[:errors] = @project.errors.full_messages
       redirect :new
     end
-    #needs to create the project
-    #needs to create permissions and associate them with the project
-    #is permissions nested within projects? yes, when looking at a specific project's permissions, but would look at regular index to see all permissions
   end
 
   def show

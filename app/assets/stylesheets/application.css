@@ -62,7 +62,17 @@ a:hover {
   color: #000;
 }
 
-/* TABLE */
+/* /////////////// FLASH DISPLAY //////////// */
+
+div.error-message {
+  color: #E3280B;
+}
+
+div.success-message {
+  color: #08A854;
+}
+
+/* ////////////// TABLE STYLING //////////// */
 
 table {
   width: 90%;
@@ -75,4 +85,61 @@ th {
 th, td {
   padding: 1%;
   border-bottom: 1px solid #000;
+}
+
+ /* /////// FORM STYLES //////// */
+  
+ form input[type="text"], form input[type="password"], form input[type="email"], form input[type="date"] {
+  padding: 12px 16px 10px;
+  width: 50%;
+  border: none;
+  border-bottom: 2px solid #888;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  margin: 6px 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+form input[type="text"]:focus, form input[type="password"]:focus, form input[type="email"]:focus,form input[type="date"]:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #EB4726;
+}
+
+div.icon input[type=button], div.icon input[type=submit] {
+  background-color: transparent;
+  border: 2px solid transparent;
+  text-decoration: none;
+  line-height: 1em;
+  cursor: pointer;
+  padding: 0px 12px;
+  margin: 0px;
+} 
+
+form textarea {
+  width: 50%;
+  height: 5em;
+  border: 2px solid #888;
+  margin: 6px 0;
+  padding: 5px;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+form textarea:focus {
+  outline: none;
+  border: 2px solid #EB4726;
+}
+
+input[type=button], input[type=submit], div.button {
+  background-color: #EB4726;
+  border: none;
+  color: #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  display: inline-block;
 }
