@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :confirm_owner, only: [:edit, :update, :destroy]
 
   def index
     @user_projects = current_user.user_projects
@@ -37,7 +38,12 @@ class ProjectsController < ApplicationController
 
   def update
     find_project
-
+    if @project.update(project_params)
+      redirect_to project_path(@project)
+    else
+      flash.now[:errors] = @project.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
@@ -53,6 +59,14 @@ class ProjectsController < ApplicationController
 
   def find_project
     @project = Project.find_by_id(params[:id])
+  end
+
+  def confirm_owner
+    find_project
+    unless @project.owners.include?(current_user)
+      flash[:errors] = "You must be a project owner to make changes to the project details"
+      redirect_to project_path(@project)
+    end
   end
 
 end

@@ -17,7 +17,17 @@
       <nav>
         <% if current_user %>
           <h3>LOGGED IN AS<br><strong><%= current_user.full_name.upcase %></strong></h3>
-          <div><%= link_to "Projects", projects_path %></div>
+          
+          <div><%= link_to "My Tasks", tasks_path %></div>
+          <div class="line"> </div>
+          <h4>PROJECTS</h4>
+            <% current_user.projects.each do |project| %>
+              <div>
+              <%= link_to project.title, project_path(project) %>
+              </div>
+            <% end %>
+            <div><em><small><%= link_to "All Projects List", projects_path %></small></em></div>
+          <div class="line"> </div>
           <div><%= link_to "Logout", logout_path %></div>
         <% else %>
           <div><%= link_to "Log In", login_path %></div>

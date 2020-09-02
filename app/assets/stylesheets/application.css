@@ -40,6 +40,15 @@
    font-weight: 600;
  }
 
+ h4 {
+  margin-block-end: 0.5em;
+ }
+
+ div.line {
+   border-bottom: 1px #000 solid;
+   width: 40%;
+   margin: 20px 0;
+ }
 
  /* LINKS */
  a {

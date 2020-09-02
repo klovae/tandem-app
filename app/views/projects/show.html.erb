@@ -9,7 +9,7 @@
 
 <%= link_to "View and add collaborators", project_permissions_path(@project) %>
 
-<p>Due date: <%= @project.human_time %></p>
+<p>Due date: <%= @project.human_time %> -- <%= link_to "Edit project details", edit_project_path(@project) %></p>
 
 <h2>Tasks</h2>
 

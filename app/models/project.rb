@@ -31,7 +31,6 @@ class Project < ApplicationRecord
     collaborators
   end
 
-
   def human_time
     self.deadline.strftime("%A, %B %-d, %Y")
   end
