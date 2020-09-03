@@ -27,11 +27,20 @@
   <% @loose_tasks.each do |t| %>
     <tr>
       <td>
-      <%= link_to "Edit", edit_project_task_path(@project, t) %>
+        <div class="icon-container">
+          <%# task complete button %>
+          <%= render partial: '/tasks/complete_button', locals: { task: t }%>
+        </div>
       </td>
 
       <td>
-      <%= t.content %>
+        <div class="icon-container">
+          <%= t.content %>
+          <%# task edit button %>
+          <%= render partial: '/tasks/edit_button', locals: { task: t }%>
+          <%# task delete button %>
+          <%= render partial: '/tasks/delete_button', locals: { task: t }%>
+        </div>
       </td>
 
       <td>
@@ -72,11 +81,20 @@
     <% section.tasks.each do |t| %>
       <tr>
         <td>
-        <%= link_to "Edit", edit_project_task_path(@project, t) %>
+          <div class="icon-container">
+            <%# task complete button %>
+            <%= render partial: '/tasks/complete_button', locals: { task: t }%>
+          </div>
         </td>
 
         <td>
-        <%= t.content %>
+          <div class="icon-container">
+           <%= t.content %>
+            <%# task edit button %>
+            <%= render partial: '/tasks/edit_button', locals: { task: t }%>
+            <%# task delete button %>
+            <%= render partial: '/tasks/delete_button', locals: { task: t }%>
+          </div>
         </td>
 
         <td>

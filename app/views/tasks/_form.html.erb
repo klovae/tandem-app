@@ -1,5 +1,10 @@
+  <label>Task description</label>
   <div class="field">
   <%= f.text_field :content %>
+  </div>
+
+  <div class="field">
+  <%= f.collection_select :section_id, sections, :id, :name, include_blank: "Select a Section" %>
   </div>
 
   <label for="deadline">Goal Date</label><br>

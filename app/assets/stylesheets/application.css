@@ -19,7 +19,7 @@
  }
 
  #all-wrapper {
-   width: 70%;
+   width: 75%;
    margin: 0 auto;
    display: grid;
    grid-gap: 3px;
@@ -89,7 +89,8 @@ div.success-message {
 /* ////////////// TABLE STYLING //////////// */
 
 table {
-  width: 90%;
+  width: 100%;
+  table-layout: auto;
 }
 
 th {
@@ -97,7 +98,7 @@ th {
 }
 
 th, td {
-  padding: 1%;
+  padding: 6px 3px;
   border-bottom: 1px solid #000;
 }
 
@@ -156,4 +157,77 @@ input[type=button], input[type=submit], div.button {
   margin-top: 20px;
   cursor: pointer;
   display: inline-block;
+}
+
+/*////// ICON STYLES ///////*/
+
+.icon-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+  
+.icon {
+  cursor: pointer;
+  flex: 0 1 auto;
+  margin-left: 6px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  transition: background-image 0.2s linear;
+}
+
+div.edit {
+background-image: url(/images/edit.png);
+background-size: contain;
+position: relative;
+}
+
+div.edit:hover {
+background-image: url(/images/edit-orng.png);
+background-size: contain;
+}
+
+
+div.migrate {
+  background-image: url(/images/migrate.png);
+  background-size: contain;
+}
+
+div.migrate:hover {
+  background-image: url(/images/migrate-orng.png);
+  background-size: contain;
+}
+
+
+div.migrated {
+  background-image: url(/images/migrate.png);
+  background-size: contain;
+  cursor: auto;
+}
+
+div.complete {
+  background-image: url(/images/bullet.png);
+  background-size: contain;
+}
+
+div.complete:hover {
+  background-image: url(/images/x-orng.png);
+  background-size: contain;
+}
+
+div.completed {
+  background-image: url(/images/x.png);
+  background-size: contain;
+  cursor: auto;
+}
+
+div.delete {
+  background-image: url(/images/delete.png);
+  background-size: contain;
+}
+
+div.delete:hover {
+  background-image: url(/images/delete-orng.png);
+  background-size: contain;
 }

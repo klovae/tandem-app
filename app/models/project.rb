@@ -2,7 +2,8 @@ class Project < ApplicationRecord
   has_many :permissions
   has_many :users, through: :permissions
   has_many :tasks
-
+  has_many :sections
+  
   def set_owner(current_user)
     Permission.create(project_id: self.id, user_id: current_user.id, creator_id: current_user.id, access_level: "owner", accepted: true)
   end

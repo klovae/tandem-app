@@ -1,6 +1,8 @@
+<h1>Edit Task</h1>
+
 <%= form_with(model: @task) do |f| %>
 
-  <%= render partial: 'form', locals: {f: f} %>
+  <%= render partial: 'form', locals: {f: f, sections: @project.sections} %>
 
   <%= f.submit "Update Task"%>
 
