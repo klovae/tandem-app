@@ -1,5 +1,5 @@
 <div class="task-component">
-    <%= form_for task do |f| %>
+    <%= form_with model: task do |f| %>
         <%= f.hidden_field :status, value: "complete" %>
         <div class="complete icon">
             <%= f.submit value: "" %>

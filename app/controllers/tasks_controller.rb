@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-
+  before_action :confirm_owner, only: [:destroy]
+  
   def index
     #needs to work on its own and with a nested route
     if params[:project_id]
@@ -42,6 +43,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    set_task
+    @project = @task.project
+    @task.destroy
+    redirect_to project_path(@project)
   end
 
   private
@@ -51,6 +56,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:content, :deadline, :project_id, :section_id, :parent_id)
+    params.require(:task).permit(:content, :deadline, :project_id, :section_id, :parent_id, :status)
   end
 end

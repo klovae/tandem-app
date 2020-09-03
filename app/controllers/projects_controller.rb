@@ -46,7 +46,6 @@ class ProjectsController < ApplicationController
 
   def destroy
     find_project
-
   end
 
   private
@@ -57,14 +56,6 @@ class ProjectsController < ApplicationController
 
   def find_project
     @project = Project.find_by_id(params[:id])
-  end
-
-  def confirm_owner
-    find_project
-    unless @project.owners.include?(current_user)
-      flash[:errors] = "You must be a project owner to make changes to the project details"
-      redirect_to project_path(@project)
-    end
   end
 
 end

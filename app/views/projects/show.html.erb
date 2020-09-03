@@ -29,7 +29,11 @@
       <td>
         <div class="icon-container">
           <%# task complete button %>
-          <%= render partial: '/tasks/complete_button', locals: { task: t }%>
+          <% if t.status == "complete" %>
+            <div class="completed icon"></div>
+          <% else %>
+              <%= render partial: '/tasks/complete_button', locals: { task: t } %>
+          <% end %>
         </div>
       </td>
 
@@ -82,9 +86,13 @@
       <tr>
         <td>
           <div class="icon-container">
-            <%# task complete button %>
-            <%= render partial: '/tasks/complete_button', locals: { task: t }%>
-          </div>
+          <%# task complete button %>
+          <% if t.status == "complete" %>
+            <div class="completed icon"></div>
+          <% else %>
+              <%= render partial: '/tasks/complete_button', locals: { task: t } %>
+          <% end %>
+        </div>
         </td>
 
         <td>

@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def confirm_owner
+    find_project
+    unless @project.owners.include?(current_user)
+      flash[:errors] = "You must be a project owner to make changes to the project details"
+      redirect_to project_path(@project)
+    end
+  end
+
 end
