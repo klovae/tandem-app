@@ -1,0 +1,38 @@
+ <td>
+        <div class="icon-container">
+          <%# task complete button %>
+          <% if t.status == "complete" %>
+            <div class="completed icon"></div>
+          <% else %>
+              <%= render partial: '/tasks/complete_button', locals: { task: t } %>
+          <% end %>
+        </div>
+      </td>
+
+      <td>
+        <div class="icon-container">
+          <%= t.content %>
+          <%# task edit button %>
+          <%= render partial: '/tasks/edit_button', locals: { task: t }%>
+          <%# task delete button %>
+          <%= render partial: '/tasks/delete_button', locals: { task: t }%>
+        </div>
+      </td>
+
+      <td>
+      <% if t.deadline %>
+        <%= t.human_time%>
+      <% end %>
+      </td>
+
+      <td>
+        <% if t.assignment %>
+          <%= t.assignment.user.full_name %>
+        <% else %>
+          <%= form_with model: assignment, url: '/assignments' do |f| %>
+            <%= f.hidden_field :task_id, value: t.id %>
+            <%= f.collection_select :user_id, collaborators, :id, :first_name %>
+            <%= f.submit "Assign" %>
+          <% end %>
+        <% end %>
+      </td>

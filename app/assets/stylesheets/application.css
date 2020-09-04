@@ -102,6 +102,12 @@ th, td {
   border-bottom: 1px solid rgb(207, 207, 207);
 }
 
+tr.completed-content {
+  color: #888888;
+}
+
+
+
  /* /////// FORM STYLES //////// */
   
  form input[type="text"], form select, form input[type="password"], form input[type="email"], form input[type="date"] {
@@ -183,6 +189,12 @@ background-size: contain;
 position: relative;
 }
 
+tr.completed-content div.edit {
+  background-image: url(/images/edit-gry.png);
+  background-size: contain;
+  position: relative;
+}
+
 div.edit:hover {
 background-image: url(/images/edit-orng.png);
 background-size: contain;
@@ -217,7 +229,7 @@ div.complete:hover {
 }
 
 div.completed {
-  background-image: url(/images/x.png);
+  background-image: url(/images/x-gry.png);
   background-size: contain;
   cursor: auto;
 }
@@ -227,7 +239,13 @@ div.delete {
   background-size: contain;
 }
 
+tr.completed-content div.delete {
+  background-image: url(/images/delete-gry.png);
+  background-size: contain;
+}
+
 div.delete:hover {
   background-image: url(/images/delete-orng.png);
   background-size: contain;
 }
+

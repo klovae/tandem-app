@@ -24,106 +24,47 @@
     <th>Assigned To</th>
     </tr>
 
-  <% @loose_tasks.each do |t| %>
+  <% @loose_tasks.where.not(status: "complete").each do |t| %>
     <tr>
-      <td>
-        <div class="icon-container">
-          <%# task complete button %>
-          <% if t.status == "complete" %>
-            <div class="completed icon"></div>
-          <% else %>
-              <%= render partial: '/tasks/complete_button', locals: { task: t } %>
-          <% end %>
-        </div>
-      </td>
-
-      <td>
-        <div class="icon-container">
-          <%= t.content %>
-          <%# task edit button %>
-          <%= render partial: '/tasks/edit_button', locals: { task: t }%>
-          <%# task delete button %>
-          <%= render partial: '/tasks/delete_button', locals: { task: t }%>
-        </div>
-      </td>
-
-      <td>
-      <% if t.deadline %>
-        <%= t.human_time%>
-      <% end %>
-      </td>
-
-      <td>
-        <% if t.assignment %>
-          <%= t.assignment.user.full_name %>
-        <% else %>
-          <%= form_with model: @assignment, url: '/assignments' do |f| %>
-            <%= f.hidden_field :task_id, value: t.id %>
-            <%= f.collection_select :user_id, @collaborators, :id, :first_name %>
-            <%= f.submit "Assign" %>
-          <% end %>
-        <% end %>
-      </td>
+      <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
     </tr>
   <% end %>
+
+  <% @loose_tasks.where(status: "complete").each do |t| %>
+    <tr class="completed-content">
+      <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
+    </tr>
+  <% end %>
+
+
   </table>
 <% end %>
 
 <% @sections.each do |section| %>
   <h3><%= section.name %></h3>
 
-  <% if section.tasks %>
+    <% if section.tasks %>
 
-    <table>
-    <tr>
-    <th></th>
-    <th>Task</th>
-    <th>Deadline</th>
-    <th>Assigned To</th>
-    </tr>
-
-    <% section.tasks.each do |t| %>
+      <table>
       <tr>
-        <td>
-          <div class="icon-container">
-          <%# task complete button %>
-          <% if t.status == "complete" %>
-            <div class="completed icon"></div>
-          <% else %>
-              <%= render partial: '/tasks/complete_button', locals: { task: t } %>
-          <% end %>
-        </div>
-        </td>
+      <th></th>
+      <th>Task</th>
+      <th>Deadline</th>
+      <th>Assigned To</th>
+      </tr>
 
-        <td>
-          <div class="icon-container">
-           <%= t.content %>
-            <%# task edit button %>
-            <%= render partial: '/tasks/edit_button', locals: { task: t }%>
-            <%# task delete button %>
-            <%= render partial: '/tasks/delete_button', locals: { task: t }%>
-          </div>
-        </td>
-
-        <td>
-        <% if t.deadline %>
-          <%= t.human_time%>
-        <% end %>
-        </td>
-
-        <td>
-          <% if t.assignment %>
-            <%= t.assignment.user.full_name %>
-          <% else %>
-            <%= form_with model: @assignment, url: '/assignments' do |f| %>
-              <%= f.hidden_field :task_id, value: t.id %>
-              <%= f.collection_select :user_id, @collaborators, :id, :first_name %>
-              <%= f.submit "Assign" %>
-            <% end %>
-          <% end %>
-        </td>
+    <% section.tasks.where.not(status: "complete").each do |t| %>
+      <tr>
+        <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
       </tr>
     <% end %>
+
+    <% section.tasks.where(status: "complete").each do |t| %>
+      <tr class="completed-content">
+        <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
+      </tr>
+    <% end %>
+
     </table>
   <% end %>
 <% end %>
