@@ -36,7 +36,7 @@ Access Level
 <div>
 <%= form_with(model: @permission, url: [@project, @permission]) do |f| %>
 <label>Select Access Level: </label>
-<%= f.select :access_level, ["owner", "manager", "contributor"], prompt: true %>
+<%= f.select :access_level, ["owner", "manager", "contributor"] %>
 </div>
 
 <div>

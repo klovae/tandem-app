@@ -4,16 +4,14 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :projects do
-    resources :tasks, only: [:new, :edit]
+    resources :tasks, only: [:new, :edit, :destroy]
     resources :permissions
     resources :sections, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :assignments
 
-  resources :tasks, only: [:index, :create, :update, :destroy]
-
-  resources :permissions, only: [:index, :show, :edit, :update]
+  resources :tasks, only: [:index, :create, :update]
 
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new'

@@ -1,5 +1,5 @@
 <div class="task-component">
-    <%= form_for task, method: :delete do |f| %>
+    <%= form_with(model: task, method: :delete, url: [project, task]) do |f| %>
         <div class="delete icon">
         <%= f.submit value: "" %>
         </div>

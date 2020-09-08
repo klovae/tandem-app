@@ -27,13 +27,13 @@
 
   <% @loose_tasks.where.not(status: "complete").each do |t| %>
     <tr>
-      <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
+      <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators, project: @project } %>
     </tr>
   <% end %>
 
   <% @loose_tasks.where(status: "complete").each do |t| %>
     <tr class="completed-content">
-      <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
+      <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators, project: @project } %>
     </tr>
   <% end %>
 
@@ -56,13 +56,13 @@
 
     <% section.tasks.where.not(status: "complete").each do |t| %>
       <tr>
-        <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
+        <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators, project: @project } %>
       </tr>
     <% end %>
 
     <% section.tasks.where(status: "complete").each do |t| %>
       <tr class="completed-content">
-        <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators } %>
+        <%= render partial: '/tasks/task_list', locals: {t: t, assignment: @assignment, collaborators: @collaborators, project: @project } %>
       </tr>
     <% end %>
 

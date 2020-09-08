@@ -16,7 +16,11 @@ class ApplicationController < ActionController::Base
   end
 
   def confirm_owner
-    find_project
+    if params[:project_id]
+      @project = Project.find_by(id: params[:project_id])
+    else
+      @project = Project.find_by(id: params[:id])
+    end
     unless @project.owners.include?(current_user)
       flash[:errors] = "You must be a project owner to make changes to the project details"
       redirect_to project_path(@project)
