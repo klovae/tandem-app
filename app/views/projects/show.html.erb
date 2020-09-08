@@ -11,8 +11,9 @@
 
 <p>Due date: <%= @project.human_time %> -- <%= link_to "Edit project details", edit_project_path(@project) %></p>
 
-<h2>Tasks</h2>
-<h3><%= link_to "Create a new section", new_project_section_path(@project) %> || <%= link_to "Add a task", new_project_task_path(@project) %></h3>
+<h2>Tasks <%= link_to new_project_task_path(@project) do %><div class="add"></div><% end %></h2>
+
+<h3><%= link_to "Create a new section", new_project_section_path(@project) %></h3>
 
 <% if @loose_tasks %>
 

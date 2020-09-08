@@ -2,6 +2,8 @@
 
 <%= render partial: '/layouts/flash_message_center'%>
 
+<p>Fill out the form below or click to <%= link_to('log in with Facebook!', '/auth/facebook') %>
+
 <%= form_tag sessions_path %>
 
 <div class="col-1">

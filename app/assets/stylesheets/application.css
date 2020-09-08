@@ -24,10 +24,11 @@
    display: grid;
    grid-gap: 3px;
    grid-template-columns: repeat(12, 1fr);
-   grid-template-rows: 130px auto;
+   grid-template-rows: 130px auto 100px;
    grid-template-areas:
       "h h h h h h h h h h h h"
       "n n n c c c c c c c c c"
+      "f f f f f f f f f f f f"
  }
 
  #header {
@@ -44,6 +45,10 @@
 
  #content-wrap {
    grid-area: c;
+ }
+
+ #footer {
+   grid-area: f;
  }
 
  #logo {
@@ -91,6 +96,7 @@ div.success-message {
 table {
   width: 100%;
   table-layout: auto;
+  margin-bottom: 30px;
 }
 
 th {
@@ -247,5 +253,26 @@ tr.completed-content div.delete {
 div.delete:hover {
   background-image: url(/images/delete-orng.png);
   background-size: contain;
+}
+
+div.add {
+  background-image: url(/images/add.png);
+  background-size: contain;
+  display: inline-block;
+  margin-left: 0px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  transition: background-image 0.2s linear;
+}
+
+div.add:hover {
+  background-image: url(/images/add-orng.png);
+  background-size: contain;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: none;
+  transition: background-image 0.2s linear;
 }
 

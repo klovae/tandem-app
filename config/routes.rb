@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
+  get '/auth/facebook/callback', to: 'sessions#create'
 
   get '/welcome', to: 'static#welcome'
   get '/about', to: 'static#about'
