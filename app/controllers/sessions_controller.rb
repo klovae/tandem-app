@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if auth
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      @user = User.find_or_create_by!(uid: auth['uid']) do |u|
         u.first_name = auth['info']['first_name']
         u.last_name = auth['info']['last_name']
         u.email = auth['info']['email']
