@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :auth_required, only: [:new, :create]
+  require 'securerandom'
 
   def new
 
@@ -11,6 +12,7 @@ class SessionsController < ApplicationController
         u.first_name = auth['info']['first_name']
         u.last_name = auth['info']['last_name']
         u.email = auth['info']['email']
+        u.password = SecureRandom.alphanumeric(10)
       end
 
       session[:user_id] = @user.id
