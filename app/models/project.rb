@@ -1,8 +1,10 @@
 class Project < ApplicationRecord
-  has_many :permissions
+  has_many :permissions, dependent: :destroy
   has_many :users, through: :permissions
-  has_many :tasks
-  has_many :sections
+  has_many :tasks, dependent: :destroy
+  has_many :sections, dependent: :destroy
+
+  validates :title, presence: true
   
   def set_owner(current_user)
     Permission.create(project_id: self.id, user_id: current_user.id, creator_id: current_user.id, access_level: "owner", accepted: true)

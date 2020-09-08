@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   require 'securerandom'
 
   def new
-
   end
 
   def create
@@ -16,14 +15,14 @@ class SessionsController < ApplicationController
       end
 
       session[:user_id] = @user.id
-      flash[:success] = "Welcome back, #{current_user.first_name}!"
+      flash[:success] = "Welcome, #{current_user.first_name}!"
       redirect_to welcome_path
 
     else
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        flash[:success] = "Welcome back, #{current_user.first_name}!"
+        flash[:success] = "Welcome, #{current_user.first_name}!"
         redirect_to welcome_path
       else
         flash.now[:error] = "Sorry, your username and/or password is not correct"

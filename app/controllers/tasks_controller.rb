@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     #needs to work on its own and with a nested route
     if params[:project_id]
     else
-      @tasks = Task.user_list(current_user)
+      @tasks = Assignment.user_list(current_user)
     end
   end
   
