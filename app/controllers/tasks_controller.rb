@@ -12,11 +12,13 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @project = Project.find_by_id(params[:project_id])
+    @collaborators = @project.collaborators
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
+      Assignment.create(user_id: current_user.id, task_id: @task.id)
       flash[:success] = "Task created."
       redirect_to project_path(@task.project)
     else

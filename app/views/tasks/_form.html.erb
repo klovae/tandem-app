@@ -1,5 +1,6 @@
-  <label>Task description</label>
+  
   <div class="field">
+  <label>Task description</label><br>
   <%= f.text_field :content %>
   </div>
 
@@ -7,7 +8,12 @@
   <%= f.collection_select :section_id, sections, :id, :name, include_blank: "Select a Section" %>
   </div>
 
-  <label for="deadline">Goal Date</label><br>
   <div class="field">
+  <label for="deadline">Goal Date</label><br>
   <%= f.date_field :deadline, min: Time.zone.today %>
   </div>
+
+  <div class="field">
+  <%= f.collection_select :user_id, collaborators, :id, :first_name, include_blank: "Assign to a Collaborator" %>
+  </div>
+

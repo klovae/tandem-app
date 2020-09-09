@@ -2,7 +2,7 @@
 
 <%= form_with(model: @task) do |f| %>
 
-  <%= render partial: 'form', locals: {f: f, sections: @project.sections} %>
+  <%= render partial: 'form', locals: {f: f, sections: @project.sections, collaborators: @collaborators} %>
 
   <%= f.hidden_field :project_id, value: @project.id %>
 
