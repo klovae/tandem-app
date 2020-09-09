@@ -265,7 +265,7 @@ div.delete:hover {
 }
 
 div.add {
-  background-image: url(/images/add.png);
+  background-image: url(/images/add-orng.png);
   background-size: contain;
   display: inline-block;
   margin-left: 0px;
@@ -276,7 +276,7 @@ div.add {
 }
 
 div.add:hover {
-  background-image: url(/images/add-orng.png);
+  background-image: url(/images/add.png);
   background-size: contain;
   display: inline-block;
   width: 20px;

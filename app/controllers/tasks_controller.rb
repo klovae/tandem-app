@@ -30,6 +30,7 @@ class TasksController < ApplicationController
   def edit
     set_task
     @project = @task.project
+    @collaborators = @project.collaborators
   end
 
   def update
