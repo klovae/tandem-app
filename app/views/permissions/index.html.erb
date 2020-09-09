@@ -26,25 +26,30 @@ Access Level
 <% end %>
 </table>
 
-<h3>Invite a New Collaborator</h3>
-<p>To add a new collaborator to your project:</p>
-<ol>
-<li>Make sure they have an account on Tandem</li>
-<li>Select a level of access to grant your new collaborator</li>
-<li>Enter their email below to send an invite</li>
-</ol> 
-<div>
-<%= form_with(model: @permission, url: [@project, @permission]) do |f| %>
-<label>Select Access Level: </label>
-<%= f.select :access_level, ["owner", "manager", "contributor"] %>
-</div>
+<% if @project.verify_owner(current_user) %>
 
-<div>
-<label>Email: </label>
-<%= f.email_field :user_email %>
-</div>
-<%= f.hidden_field :project_id, value: @project.id %>
-<%= f.hidden_field :creator_id, value: current_user.id %>
+  <h3>Invite a New Collaborator</h3>
+  <p>To add a new collaborator to your project:</p>
+  <ol>
+  <li>Make sure they have an account on Tandem</li>
+  <li>Select a level of access to grant your new collaborator</li>
+  <li>Enter their email below to send an invite</li>
+  </ol> 
 
-<%= f.submit "Invite Collaborator "%>
+  <div>
+  <%= form_with(model: @permission, url: [@project, @permission]) do |f| %>
+  <label>Select Access Level: </label>
+  <%= f.select :access_level, ["owner", "manager", "contributor"] %>
+  </div>
+
+  <div>
+  <label>Email: </label>
+  <%= f.email_field :user_email %>
+  </div>
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <%= f.hidden_field :creator_id, value: current_user.id %>
+
+  <%= f.submit "Invite Collaborator "%>
+  <% end %>
+
 <% end %>

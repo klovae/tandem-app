@@ -18,6 +18,10 @@ class Project < ApplicationRecord
     owners
   end
 
+  def verify_owner(user)
+    self.owners.include?(user)
+  end
+
   def collaborators_with_access_level
     collaborators = []
     self.permissions.each do |c|

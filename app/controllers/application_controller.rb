@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       @project = Project.find_by(id: params[:id])
     end
     unless @project.owners.include?(current_user)
-      flash[:errors] = "You must be a project owner to make changes to the project details"
+      flash[:error] = "You must be a project owner to take this action."
       redirect_to project_path(@project)
     end
   end

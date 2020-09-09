@@ -8,7 +8,7 @@
     </div>
 <% elsif flash[:errors] %>
     <div class="error-message">
-        <p>Could not save your information for the following <%= "reason".pluralize(flash.now[:errors].count) %>:</p>
+    <p>Could not save your information for the following <%= pluralize(flash.now[:errors].count, 'reason') %>:</p>
         <ul>
         <% flash.now[:errors].each do |error| %>
             <li><%= error %></li>
