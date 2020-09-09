@@ -60,6 +60,10 @@
    font-weight: 600;
  }
 
+ h1.title {
+   margin-block-end: 0em;
+ }
+
  h4 {
   margin-block-end: 0.5em;
  }
@@ -68,6 +72,13 @@
    border-bottom: 1px #000 solid;
    width: 40%;
    margin: 20px 0;
+ }
+
+ p.description {
+   font-style: italic;
+   font-size: 1.2em;
+   color: #666666;
+   margin-block-start: 0;
  }
 
  /* LINKS */
@@ -86,13 +97,13 @@ a:hover {
 
 div.error-message {
   color: #E3280B;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
 }
 
 div.success-message {
   color: #08A854;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
 }
 
@@ -102,6 +113,7 @@ table {
   width: 100%;
   table-layout: auto;
   margin-bottom: 30px;
+  border-spacing: 0;
 }
 
 th {

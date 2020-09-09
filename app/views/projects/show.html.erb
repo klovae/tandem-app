@@ -1,5 +1,5 @@
-<h1><%= @project.title %></h1>
-<%= @project.description %></p>
+<h1 class="title"><%= @project.title %></h1>
+<p class="description"><%= @project.description %></p>
 
 <%= render partial: '/layouts/flash_message_center' %>
 
@@ -8,11 +8,9 @@
 <% @owners.each do |owner| %>
   <%= owner.full_name%><%= ", " unless owner == @owners.last%>
 <% end %>
-</p>
+ — <%= link_to "View and add collaborators", project_permissions_path(@project) %>
 
-<%= link_to "View and add collaborators", project_permissions_path(@project) %>
-
-<p>Due date: <%= @project.human_time %> -- <%= link_to "Edit project details", edit_project_path(@project) %></p>
+<p>Due date: <%= @project.human_time %> — <%= link_to "Edit project details", edit_project_path(@project) %></p>
 
 <h2>Tasks <%= link_to new_project_task_path(@project) do %><div class="add"></div><% end %></h2>
 
