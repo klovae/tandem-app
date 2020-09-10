@@ -1,5 +1,6 @@
 class PermissionsController < ApplicationController
-  
+  before_action :confirm_owner
+
   def index
     @project = Project.find_by(id: params[:project_id])
     @collaborator_list = @project.collaborators_with_access_level
@@ -19,7 +20,9 @@ class PermissionsController < ApplicationController
   end
 
   def edit
-   
+    @permission = Permission.find_by(id: params[:id])
+    @project = Project.find_by(id: params[:project_id])
+    @user = @permission.user
   end
 
   def update

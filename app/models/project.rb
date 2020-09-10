@@ -25,7 +25,7 @@ class Project < ApplicationRecord
   def collaborators_with_access_level
     collaborators = []
     self.permissions.each do |c|
-      collaborators << [c.user, c.access_level]
+      collaborators << [c.user, c.access_level, c]
     end
     collaborators
   end

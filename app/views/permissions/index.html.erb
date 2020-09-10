@@ -11,6 +11,11 @@ Email
 <th>
 Access Level
 </th>
+<% if @project.verify_owner(current_user) %>
+  <th>
+  Actions
+  </th>
+<% end %>
 <% @collaborator_list.each do |collaborator|%>
   <tr>
     <td>
@@ -22,6 +27,18 @@ Access Level
     <td>
       <%= collaborator[1].titlecase %>
     </td>
+    <% if @project.verify_owner(current_user) %>
+    <td>
+      <div class="icon-container">
+        <%= link_to edit_project_permission_path(@project, collaborator[2]) do %><div class="edit icon"></div><% end %>
+        <%= form_with(model: permission, method: :delete, url: [@project, collaborator[2]) do |f| %>
+          <div class="delete icon">
+          <%= f.submit value: "" %>
+        </div>
+    <% end %>
+      </div>
+    </td>
+    <% end %>
   </tr>
 <% end %>
 </table>

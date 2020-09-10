@@ -1,0 +1,10 @@
+<h1>Editing Permission for <%= @project.title %></h1>
+
+<h3>Permission Overview: <%= @user.full_name %></h3>
+<ul>
+<li>Access Level: <%= @permission.access_level %></li>
+<li>Email: <%= @user.email %></li>
+<li>Added by <%= @permission.creator.full_name %> on <%= @permission.created_at.strftime("%B %-d, %Y") %></li>
+
+</ul>
+<h3>Form</h3>
