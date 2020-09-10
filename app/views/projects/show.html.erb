@@ -43,7 +43,7 @@
 <% end %>
 
 <% @sections.each do |section| %>
-  <h3><%= section.name %></h3>
+  <h3><%= section.name %> <%= link_to new_project_section_task_path(@project, section) do %><div class="add"></div><% end %></h3>
 
     <% if section.tasks %>
 

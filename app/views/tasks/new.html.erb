@@ -1,4 +1,4 @@
-<h1>Add a Task</h1>
+<h1>Add a Task <%= "to #{@section.name}" unless @section.name == nil %></h1>
 
 <%= form_with(model: @task) do |f| %>
 

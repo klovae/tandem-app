@@ -1,14 +1,14 @@
-<label for="title">Title</label><br>
 <div class="field">
+<label for="title">Title</label><br>
 <%= f.text_field :title %>
 </div>
 
-<label for="description">Description</label><br>
 <div class="field">
-<%= f.text_area :description %>
+<label for="description">Description</label><br>
+<%= f.text_field :description %>
 </div>
 
-<label for="deadline">Goal Date</label><br>
 <div class="field">
+<label for="deadline">Goal Date</label><br>
 <%= f.date_field :deadline, min: Time.zone.today %>
 </div>

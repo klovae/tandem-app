@@ -10,8 +10,13 @@ class TasksController < ApplicationController
   end
   
   def new
-    @task = Task.new
-    @project = Project.find_by_id(params[:project_id])
+    @task = Task.new do |t|
+      if params[:section_id]
+        @section = Section.find_by(id: params[:section_id])
+        t.section_id = params[:section_id]
+      end
+    end
+    @project = Project.find_by(id: params[:project_id])
     @collaborators = @project.collaborators
   end
 
