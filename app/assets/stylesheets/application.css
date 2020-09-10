@@ -266,13 +266,13 @@ div.delete {
   background-size: contain;
 }
 
-tr.completed-content div.delete {
-  background-image: url(/images/delete-gry.png);
+div.delete:hover {
+  background-image: url(/images/delete-orng.png);
   background-size: contain;
 }
 
-div.delete:hover {
-  background-image: url(/images/delete-orng.png);
+tr.completed-content div.delete {
+  background-image: url(/images/delete-gry.png);
   background-size: contain;
 }
 
