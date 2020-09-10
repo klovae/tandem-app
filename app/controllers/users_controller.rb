@@ -22,6 +22,21 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      flash[:success] = "Your information has been updated."
+      redirect_to welcome_path
+    else
+      flash[:errors] = @user.errors.full_messages
+      render :edit
+    end
+  end
+
   private
 
   def user_params
