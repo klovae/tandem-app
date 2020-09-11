@@ -15,6 +15,7 @@ class TasksController < ApplicationController
         @section = Section.find_by(id: params[:section_id])
         t.section_id = params[:section_id]
       end
+      t.build_assignment
     end
     @project = Project.find_by(id: params[:project_id])
     @collaborators = @project.collaborators
@@ -23,7 +24,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      Assignment.create(user_id: current_user.id, task_id: @task.id)
       flash[:success] = "Task created."
       redirect_to project_path(@task.project)
     else
@@ -64,6 +64,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:content, :deadline, :project_id, :section_id, :parent_id, :status)
+    params.require(:task).permit(:content, :deadline, :project_id, :section_id, :parent_id, :status, assignment_attributes: [:user_id, :id])
   end
 end
