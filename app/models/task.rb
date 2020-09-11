@@ -9,7 +9,7 @@ class Task < ApplicationRecord
   belongs_to :parent, class_name: "Task", optional: true
 
   def human_time
-    self.deadline.strftime("%A, %B %-d, %Y")
+    self.deadline.strftime("%a, %B %-d, %Y")
   end
 
 end

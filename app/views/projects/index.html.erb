@@ -4,6 +4,9 @@
 Project
 </th>
 <th>
+Description
+</th>
+<th>
 Deadline
 </th>
 <th>
@@ -14,9 +17,13 @@ Role
   <td>
   <%= link_to project[0].title, project_path(project[0]) %>
   </td>
+
+  <td>
+  <em><%= project[0].description %></em>
+  </td>
   
   <td>
-  <%= project[0].deadline %>
+  <%= project[0].human_time %>
   </td>
   
   <td>

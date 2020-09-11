@@ -16,6 +16,10 @@ class User < ApplicationRecord
     self.first_name + " " + self.last_name
   end
 
+  def display_name
+    self.first_name + " " + self.last_name[0]
+  end
+
   def user_projects
     projects = []
     permissions = Permission.where(user_id: self.id, accepted: true)

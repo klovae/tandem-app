@@ -39,7 +39,7 @@ class Project < ApplicationRecord
   end
 
   def human_time
-    self.deadline.strftime("%A, %B %-d, %Y")
+    self.deadline.strftime("%a, %B %-d, %Y")
   end
 
 end

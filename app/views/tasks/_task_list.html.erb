@@ -27,7 +27,7 @@
 
 <td>
   <% if t.assignment %>
-    <%= t.assignment.user.full_name %>
+    <%= t.assignment.user.display_name %>
   <% else %>
     <%= form_with model: assignment, url: '/assignments' do |f| %>
       <%= f.hidden_field :task_id, value: t.id %>
