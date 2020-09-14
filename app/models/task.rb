@@ -4,7 +4,7 @@ class Task < ApplicationRecord
 
   belongs_to :project
   has_one :assignment, dependent: :destroy
-  accepts_nested_attributes_for :assignment
+  accepts_nested_attributes_for :assignment, reject_if: proc { |attributes| attributes['user_id'].blank? }
 
   #self join
   has_many :subtasks, class_name: "Task", foreign_key: "parent_id"
