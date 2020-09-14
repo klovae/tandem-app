@@ -35,6 +35,9 @@ class TasksController < ApplicationController
 
   def edit
     set_task
+    if @task.assignment.nil?
+      @task.build_assignment
+    end
     @project = @task.project
     @collaborators = @project.collaborators
   end

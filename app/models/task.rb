@@ -4,7 +4,7 @@ class Task < ApplicationRecord
 
   belongs_to :project
   has_one :assignment, dependent: :destroy
-  accepts_nested_attributes_for :assignment, reject_if: proc { |attributes| attributes['user_id'].blank? }
+  accepts_nested_attributes_for :assignment, reject_if: :no_assignee
 
   #self join
   has_many :subtasks, class_name: "Task", foreign_key: "parent_id"
@@ -12,9 +12,13 @@ class Task < ApplicationRecord
 
   #validation method
   def date_cannot_earlier_than_today
-    if deadline < Time.zone.today
+    if deadline && deadline < Time.zone.today
       errors.add(:deadline, "can't be set in the past")
     end
+  end
+
+  def no_assignee(attributes)
+    attributes['user_id'].blank?
   end
 
   def human_time

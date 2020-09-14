@@ -150,15 +150,20 @@ form input[type="text"]:focus, input#permission_user_email:focus, form select:fo
   border-bottom: 2px solid #EB4726;
 }
 
-div.icon input[type=button], div.icon input[type=submit] {
+div.icon input[type=button], div.icon input[type=submit], div.icon input[type=button]:focus, div.icon input[type=submit]:focus, div.icon input[type=button]:active, div.icon input[type=submit]:active {
   background-color: transparent;
   border: 2px solid transparent;
   text-decoration: none;
   line-height: 1em;
   cursor: pointer;
-  padding: 0px 12px;
+  padding: 12px 12px;
   margin: 0px;
+  font-size: 0px;
 } 
+
+div.icon input[type=button]:focus, div.icon input[type=submit]:focus, div.icon input[type=button]:active, div.icon input[type=submit]:active {
+  outline: none;
+}
 
 form textarea {
   width: 50%;
@@ -186,6 +191,16 @@ input[type=button], input[type=submit], div.button {
   margin-top: 20px;
   cursor: pointer;
   display: inline-block;
+}
+
+td input[type=submit] {
+  margin-top: 0px;
+  padding: 6px 12px;
+}
+
+td select#assignment_user_id {
+  margin: 0;
+  padding: 5px 10px;
 }
 
 div.field { 
