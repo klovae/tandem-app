@@ -22,13 +22,14 @@ class TasksController < ApplicationController
   end
 
   def create
+    @project = Project.find_by(id: params[:task][:project_id])
     @task = Task.new(task_params)
     if @task.save
       flash[:success] = "Task created."
       redirect_to project_path(@task.project)
     else
       flash[:errors] = @task.errors.full_messages
-      render :new
+      redirect_to new_project_task_path(@project)
     end
   end
 
@@ -47,7 +48,6 @@ class TasksController < ApplicationController
       flash[:errors] = @task.errors.full_messages
       render :edit
     end
-
   end
 
   def destroy

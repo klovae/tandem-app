@@ -10,7 +10,7 @@
 
   <div class="field">
   <label for="deadline">Goal Date</label><br>
-  <%= f.date_field :deadline, min: Time.zone.today %>
+  <%= f.date_field :deadline %>
   </div>
 
   <%= f.fields_for :assignment do |a| %>

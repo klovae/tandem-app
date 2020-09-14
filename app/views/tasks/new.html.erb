@@ -1,5 +1,7 @@
 <h1>Add a Task <% if @section %><%= "to #{@section.name}" %><% end %></h1>
 
+<%= render partial: '/layouts/flash_message_center' %>
+
 <%= form_with(model: @task) do |f| %>
 
   <%= render partial: 'form', locals: {f: f, sections: @project.sections, collaborators: @collaborators} %>
