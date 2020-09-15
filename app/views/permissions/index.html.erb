@@ -16,6 +16,7 @@ Access Level
   Actions
   </th>
 <% end %>
+
 <% @collaborator_list.each do |collaborator|%>
   <tr>
     <td>
@@ -31,11 +32,7 @@ Access Level
     <td>
       <div class="icon-container">
         <%= link_to edit_project_permission_path(@project, collaborator[2]) do %><div class="edit icon"></div><% end %>
-        <%= form_with(model: permission, method: :delete, url: [@project, collaborator[2]) do |f| %>
-          <div class="delete icon">
-          <%= f.submit value: "" %>
-        </div>
-    <% end %>
+        <%= link_to project_permission_path(@project, collaborator[2]) do %><div class="delete icon"></div><% end %>
       </div>
     </td>
     <% end %>
@@ -52,6 +49,8 @@ Access Level
   <li>Select a level of access to grant your new collaborator</li>
   <li>Enter their email below to send an invite</li>
   </ol> 
+
+  <%= render partial: '/layouts/flash_message_center' %>
 
   <div>
   <%= form_with(model: @permission, url: [@project, @permission]) do |f| %>

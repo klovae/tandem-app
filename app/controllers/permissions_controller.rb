@@ -15,8 +15,16 @@ class PermissionsController < ApplicationController
       @permission.save
       redirect_to project_permissions_path(params[:project_id])
     else
-      redirect_to project_permissions_path(params[:project_id])
+      @project = Project.find_by(id: params[:project_id])
+      @collaborator_list = @project.collaborators_with_access_level
+      flash[:error] = "The email address #{params[:permission][:user_email]} is not currently associated with a Tandem user."
+      render :index
     end
+  end
+
+  def show
+    @permission = Permission.find_by(id: params[:id])
+    @project = Project.find_by(id: params[:project_id])
   end
 
   def edit
@@ -32,6 +40,9 @@ class PermissionsController < ApplicationController
   end
 
   def destroy
+    @permission = Permission.find_by(id: params[:id])
+    @permission.destroy
+    redirect_to project_permissions_path(@permission.project)
   end
 
   private

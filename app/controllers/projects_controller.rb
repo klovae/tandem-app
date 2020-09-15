@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
       redirect_to project_path(@project)
     else
       flash.now[:errors] = @project.errors.full_messages
-      redirect :new
+      render :new
     end
   end
 

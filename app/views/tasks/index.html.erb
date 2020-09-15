@@ -10,23 +10,7 @@
 
 <% @tasks.each do |t| %>
   <tr>
-    <td>
-    <%= link_to "Edit", edit_project_task_path(t.project, t) %>
-    </td>
-
-    <td>
-    <%= t.content %>
-    </td>
-
-    <td>
-    <%= link_to t.project.title, project_path(t.project) %> 
-    </td>
-
-    <td>
-    <% if t.deadline %>
-      <%= t.human_time%>
-    <% end %>
-    </td>
+    <%= render partial: '/tasks/user_task_list', locals: { t: t } %>
   </tr>
 <% end %>
 

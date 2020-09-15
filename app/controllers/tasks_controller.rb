@@ -28,8 +28,9 @@ class TasksController < ApplicationController
       flash[:success] = "Task created."
       redirect_to project_path(@task.project)
     else
+      @collaborators = @project.collaborators
       flash[:errors] = @task.errors.full_messages
-      redirect_to new_project_task_path(@project)
+      render :new
     end
   end
 

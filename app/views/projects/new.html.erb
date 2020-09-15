@@ -1,5 +1,7 @@
 <h1>Start a Project</h1>
 
+<%= render partial: '/layouts/flash_message_center' %>
+
 <%= form_with(model: @project) do |f| %>
 
   <%= render partial: 'form', locals: {f: f} %>
