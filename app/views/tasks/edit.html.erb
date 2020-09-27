@@ -1,6 +1,6 @@
 <h1>Edit Task</h1>
 
-<%= form_with(model: @task) do |f| %>
+<%= form_with(model: @task, local: true) do |f| %>
 
   <%= render partial: 'form', locals: {f: f, sections: @project.sections, collaborators: @collaborators} %>
 

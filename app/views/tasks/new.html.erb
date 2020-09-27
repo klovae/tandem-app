@@ -2,7 +2,7 @@
 
 <%= render partial: '/layouts/flash_message_center' %>
 
-<%= form_with(model: @task) do |f| %>
+<%= form_with(model: @task, url: [@project, @task], local: true) do |f| %>
 
   <%= render partial: 'form', locals: {f: f, sections: @project.sections, collaborators: @collaborators} %>
 

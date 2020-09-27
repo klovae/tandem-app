@@ -9,15 +9,21 @@ class PermissionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:permission][:user_email])
-    if @user
+    @project = Project.find_by(id: params[:project_id])
+    if @user && @project.collaborators.exclude?(@user)
       @permission = Permission.new(permissions_params.except("user_email"))
       @permission.user_id = @user.id
       @permission.save
       redirect_to project_permissions_path(params[:project_id])
-    else
-      @project = Project.find_by(id: params[:project_id])
+    elsif @user && @project.collaborators.include?(@user)
       @collaborator_list = @project.collaborators_with_access_level
-      flash[:error] = "The email address #{params[:permission][:user_email]} is not currently associated with a Tandem user."
+      @permission = Permission.new
+      flash.now[:error] = "#{@user.full_name} is already a collaborator on this project."
+      render :index
+    else
+      @collaborator_list = @project.collaborators_with_access_level
+      @permission = Permission.new
+      flash.now[:error] = "The email address #{params[:permission][:user_email]} is not currently associated with a Tandem user."
       render :index
     end
   end

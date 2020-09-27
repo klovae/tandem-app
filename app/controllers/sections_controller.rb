@@ -10,7 +10,8 @@ class SectionsController < ApplicationController
     if @section.save
       redirect_to project_path(@section.project)
     else
-      flash.now[:error] = "Sections need a name"
+      @project = Project.find_by(id: params[:section][:project_id])
+      flash.now[:error] = "Sections need a name."
       render :new
     end
   end

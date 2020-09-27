@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :error
-  add_flash_types :success
+  add_flash_types :error, :errors, :success
 
   helper_method :current_user
   before_action :auth_required

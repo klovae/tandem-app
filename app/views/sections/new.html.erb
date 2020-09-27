@@ -1,6 +1,8 @@
 <h1>Create a New Section</h1>
 
-<%= form_with(model: @section, url: [@project, @section]) do |f| %>
+<%= render partial: '/layouts/flash_message_center' %>
+
+<%= form_with(model: @section, url: [@project, @section], local: true) do |f| %>
   <div class='label'>
     <label>Name:</label>
   </div>

@@ -40,6 +40,7 @@ Access Level
 <% end %>
 </table>
 
+
 <% if @project.verify_owner(current_user) %>
 
   <h3>Invite a New Collaborator</h3>
@@ -52,8 +53,8 @@ Access Level
 
   <%= render partial: '/layouts/flash_message_center' %>
 
+  <%= form_with(model: @permission, url: [@project, @permission], local: true) do |f| %>
   <div>
-  <%= form_with(model: @permission, url: [@project, @permission]) do |f| %>
   <label>Select Access Level: </label>
   <%= f.select :access_level, ["owner", "manager", "contributor"] %>
   </div>
@@ -62,6 +63,7 @@ Access Level
   <label>Email: </label>
   <%= f.email_field :user_email %>
   </div>
+  
   <%= f.hidden_field :project_id, value: @project.id %>
   <%= f.hidden_field :creator_id, value: current_user.id %>
 

@@ -28,8 +28,10 @@ class TasksController < ApplicationController
       flash[:success] = "Task created."
       redirect_to project_path(@task.project)
     else
+      #includes assignment options if no assignment was submitted
+      @task.assignment = Assignment.new
       @collaborators = @project.collaborators
-      flash[:errors] = @task.errors.full_messages
+      flash.now[:errors] = @task.errors.full_messages
       render :new
     end
   end
@@ -46,10 +48,14 @@ class TasksController < ApplicationController
   def update
     set_task
     if @task.update(task_params)
+      #addresses ability to remove an existing assignment via edit
+      if @task.assignment && params[:task][:assignment_attributes][:user_id].blank?
+        @task.assignment.destroy
+      end
       flash[:success] = "Task updated."
       redirect_to project_path(@task.project)
     else
-      flash[:errors] = @task.errors.full_messages
+      flash.now[:errors] = @task.errors.full_messages
       render :edit
     end
   end
