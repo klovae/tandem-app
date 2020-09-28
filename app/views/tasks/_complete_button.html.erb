@@ -1,7 +1,7 @@
 <div class="task-component">
-    <%= form_with model: task do |f| %>
+    <%= form_with(model: task, local: true) do |f| %>
         <%= f.hidden_field :status, value: "complete" %>
-        <div class="complete icon">
+        <div class="complete icon flex-icon">
             <%= f.submit value: "" %>
         </div>
     <% end %>

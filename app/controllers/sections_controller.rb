@@ -1,5 +1,12 @@
 class SectionsController < ApplicationController
 
+  def index
+    @new_section = Section.new
+    @project = Project.find_by(id: params[:project_id])
+    @sections = @project.sections
+  end
+
+
   def new
     @section = Section.new
     @project = Project.find_by(id: params[:project_id])
@@ -10,9 +17,22 @@ class SectionsController < ApplicationController
     if @section.save
       redirect_to project_path(@section.project)
     else
-      @project = Project.find_by(id: params[:section][:project_id])
+      @project = Project.find_by(id: params[:project_id])
       flash.now[:error] = "Sections need a name."
       render :new
+    end
+  end
+
+  def update
+    @section = Section.find_by(id: params[:id])
+    @project = Project.find_by(id: params[:project_id])
+    if @section.update(section_params)
+      flash[:success] = "Section name updated."
+      redirect_to project_path(@project)
+    else
+      @sections = @project.sections
+      flash.now[:error] = "Sections need a name."
+      render :index
     end
   end
 

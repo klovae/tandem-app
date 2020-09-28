@@ -1,6 +1,6 @@
 <div class="task-component">
     <%= form_with(model: task, method: :delete, url: [project, task]) do |f| %>
-        <div class="delete icon">
+        <div class="delete icon flex-icon">
         <%= f.submit value: "" %>
         </div>
     <% end %>

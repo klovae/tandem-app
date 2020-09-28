@@ -1,5 +1,5 @@
 class PermissionsController < ApplicationController
-  before_action :confirm_owner
+  before_action :confirm_owner, except: [:index, :update]
 
   def index
     @project = Project.find_by(id: params[:project_id])

@@ -18,7 +18,7 @@ Access Level
 <% end %>
 
 <% @collaborator_list.each do |collaborator|%>
-  <tr>
+  <tr <% if collaborator[2].accepted? == false %>class="pending"<% end %>>
     <td>
       <%= collaborator[0].full_name %>
     </td>
@@ -26,13 +26,13 @@ Access Level
       <%= collaborator[0].email %>
     </td>
     <td>
-      <%= collaborator[1].titlecase %>
+      <%= collaborator[1].titlecase %> <% if collaborator[2].accepted? == false %>(Invitation pending)<% end %> 
     </td>
     <% if @project.verify_owner(current_user) %>
     <td>
       <div class="icon-container">
-        <%= link_to edit_project_permission_path(@project, collaborator[2]) do %><div class="edit icon"></div><% end %>
-        <%= link_to project_permission_path(@project, collaborator[2]) do %><div class="delete icon"></div><% end %>
+        <%= link_to edit_project_permission_path(@project, collaborator[2]) do %><div class="edit icon flex-icon"></div><% end %>
+        <%= link_to project_permission_path(@project, collaborator[2]) do %><div class="delete icon flex-icon"></div><% end %>
       </div>
     </td>
     <% end %>

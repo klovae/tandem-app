@@ -49,7 +49,7 @@ class TasksController < ApplicationController
     set_task
     if @task.update(task_params)
       #addresses ability to remove an existing assignment via edit
-      if @task.assignment && params[:task][:assignment_attributes][:user_id].blank?
+      if @task.assignment && params[:task][:assignment_attributes].present? && params[:task][:assignment_attributes][:user_id].blank?
         @task.assignment.destroy
       end
       flash[:success] = "Task updated."

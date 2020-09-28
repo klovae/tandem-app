@@ -1,0 +1,39 @@
+<h1>Add or Edit Sections</h1>
+
+<%= render partial: '/layouts/flash_message_center' %>
+
+<h2>New Section</h2>
+
+<%= form_with(model: @new_section, url: [@project, @new_section], local: true) do |f| %>
+  
+  <%= f.text_field :name, placeholder: "New section name" %>
+
+  <%= f.hidden_field :project_id, value: @project.id %>
+  
+  <div class="icon inline-icon add">
+    <%= f.submit " " %>
+  </div>
+<% end %>
+
+<% if @sections %>
+  <h2>Existing Sections</h2>
+  
+  <% @sections.each do |section| %>
+
+    <%= form_with(model: section, url: [@project, section], local: true) do |f| %>
+      
+      <%= f.text_field :name, placeholder: "New section name" %>
+
+      <%= f.hidden_field :project_id, value: @project.id %>
+      
+      <div class="icon inline-icon submit-edit">
+        <%= f.submit " " %>
+      </div>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+
+
+<p>Back to <%= link_to @project.title, project_path(@project) %></p>

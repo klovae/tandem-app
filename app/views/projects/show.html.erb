@@ -12,9 +12,9 @@
 
 <p>Due date: <%= @project.human_time %> — <%= link_to "Edit project details", edit_project_path(@project) %></p>
 
-<h2>Tasks <%= link_to new_project_task_path(@project) do %><div class="add"></div><% end %></h2>
+<h3><%= link_to "Create and edit sections", project_sections_path(@project) %></h3>
 
-<h3><%= link_to "Create a new section", new_project_section_path(@project) %></h3>
+<h2>Tasks <%= link_to new_project_task_path(@project) do %><div class="add inline-icon icon-small"></div><% end %></h2>
 
 <% if @loose_tasks %>
 
@@ -43,7 +43,7 @@
 <% end %>
 
 <% @sections.each do |section| %>
-  <h3><%= section.name %> <%= link_to new_project_section_task_path(@project, section) do %><div class="add"></div><% end %></h3>
+  <h3><%= section.name %> <%= link_to new_project_section_task_path(@project, section) do %><div class="add icon-small inline-icon"></div><% end %></h3>
 
     <% if section.tasks %>
 
