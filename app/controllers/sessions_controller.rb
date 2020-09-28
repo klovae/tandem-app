@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         flash[:success] = "Welcome, #{current_user.first_name}!"
         redirect_to welcome_path
       else
-        flash[:error] = "Sorry, your username and/or password is not correct"
+        flash.now[:error] = "Sorry, your username and/or password is not correct"
         render :new
       end
     end

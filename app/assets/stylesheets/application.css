@@ -96,7 +96,7 @@ a:hover {
 /* /////////////// FLASH DISPLAY //////////// */
 
 div.error-message {
-  color: #E3280B;
+  color: #df260d;
   font-size: 1.1em;
   font-weight: 600;
 }
@@ -210,6 +210,11 @@ td select#assignment_user_id {
 
 div.field { 
   margin-bottom: 10px;
+}
+
+div.field .field_with_errors input {
+  border-bottom: 4px solid #df260d;
+  background-color: #ffe0db;
 }
 
 /*////// ICON STYLES ///////*/

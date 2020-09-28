@@ -15,7 +15,7 @@ Specs:
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
 - [x] Include nested resource show or index - /projects/:id/permissions
 - [x] Include nested resource "new" form - /projects/:id/tasks/new
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [ ] Include form display of validation errors - /users/new
 
 Confirm:
 - [x] The application is pretty DRY
