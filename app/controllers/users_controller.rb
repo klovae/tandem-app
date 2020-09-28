@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         flash[:success] = "Account created successfully. Welcome to Tandem!"
         redirect_to welcome_path
     else
-        flash[:errors] = @user.errors.full_messages
+        flash.now[:errors] = @user.errors.full_messages
         render :new
     end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = "Your information has been updated."
       redirect_to welcome_path
     else
-      flash[:errors] = @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       render :edit
     end
   end

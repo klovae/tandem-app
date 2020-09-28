@@ -5,9 +5,6 @@ class AssignmentsController < ApplicationController
     redirect_to project_path(@assignment.task.project)
   end
 
-  def update
-  end
-
   private
 
   def assignment_params

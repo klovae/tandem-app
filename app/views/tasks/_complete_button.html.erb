@@ -1,6 +1,9 @@
 <div class="task-component">
     <%= form_with(model: task, local: true) do |f| %>
         <%= f.hidden_field :status, value: "complete" %>
+        <% if defined?(project) %>
+            <%= f.hidden_field :project_id, value: project.id %>
+        <% end %>
         <div class="complete icon flex-icon">
             <%= f.submit value: "" %>
         </div>

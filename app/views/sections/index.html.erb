@@ -17,7 +17,7 @@
 
 <% if @sections %>
   <h2>Existing Sections</h2>
-  
+
   <% @sections.each do |section| %>
 
     <%= form_with(model: section, url: [@project, section], local: true) do |f| %>
@@ -33,7 +33,5 @@
 
   <% end %>
 <% end %>
-
-
 
 <p>Back to <%= link_to @project.title, project_path(@project) %></p>

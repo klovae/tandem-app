@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :assignments
 
   resources :tasks, only: [:index, :create, :update]
+  get '/mytasks', to: 'tasks#index'
 
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new'

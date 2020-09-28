@@ -8,14 +8,14 @@ Specs:
 - [x] Include at least one many-to-many relationship - User has many Projects through Permissions, Project has_many Users through Permissions.
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user - Permissions has an "access_level" string that determines how a user may interact with a project.
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [x] Include signup (how e.g. Devise)
-- [x] Include login (how e.g. Devise)
-- [x] Include logout (how e.g. Devise)
-- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature - All tasks assigned to logged-in user: /mytasks
+- [x] Include signup
+- [x] Include login
+- [x] Include logout
+- [x] Include third party signup/login (OmniAuth for Facebook)
 - [x] Include nested resource show or index - /projects/:id/permissions
 - [x] Include nested resource "new" form - /projects/:id/tasks/new
-- [ ] Include form display of validation errors - /users/new
+- [x] Include form display of validation errors - /users/new
 
 Confirm:
 - [x] The application is pretty DRY

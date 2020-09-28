@@ -4,7 +4,7 @@
     <% if t.status == "complete" %>
       <div class="completed icon"></div>
     <% else %>
-        <%= render partial: '/tasks/complete_button', locals: { task: t } %>
+        <%= render partial: '/tasks/complete_button', locals: { task: t, project: project } %>
     <% end %>
   </div>
 </td>

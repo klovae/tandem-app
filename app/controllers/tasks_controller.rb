@@ -53,7 +53,11 @@ class TasksController < ApplicationController
         @task.assignment.destroy
       end
       flash[:success] = "Task updated."
-      redirect_to project_path(@task.project)
+      if params[:task][:project_id].present?
+        redirect_to project_path(@task.project)
+      else
+        redirect_to mytasks_path
+      end
     else
       flash.now[:errors] = @task.errors.full_messages
       render :edit

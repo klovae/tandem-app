@@ -14,7 +14,7 @@ class Assignment < ApplicationRecord
         end
       end
     end
-    dated_tasks.sort_by { |task| task.deadline if task.deadline }
+    dated_tasks.sort_by { |task| task.deadline }
     dated_tasks + undated_tasks
   end
 end
