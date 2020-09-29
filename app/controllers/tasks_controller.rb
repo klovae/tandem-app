@@ -42,6 +42,7 @@ class TasksController < ApplicationController
     if @task.assignment.nil?
       @task.build_assignment
     end
+    session[:return_to] = request.referer
     @project = @task.project
     @collaborators = @project.collaborators
   end
@@ -54,8 +55,11 @@ class TasksController < ApplicationController
         @task.assignment.destroy
       end
       flash[:success] = "Task updated."
+      #post-completion and post-edit redirects to origination location
       if params[:task][:project_id].present?
         redirect_to project_path(@task.project)
+      elsif session[:return_to]
+        redirect_to session.delete(:return_to)
       else
         redirect_to mytasks_path
       end

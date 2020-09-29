@@ -35,6 +35,9 @@ class ApplicationController < ActionController::Base
   def set_project
     if params[:project_id]
       @project = Project.find_by(id: params[:project_id])
+    elsif params[:assignment]
+      task = Task.find_by(id: params[:assignment][:task_id])
+      @project = task.project
     else
       @project = Project.find_by(id: params[:id])
     end

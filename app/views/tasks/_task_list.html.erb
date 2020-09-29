@@ -30,7 +30,7 @@
 <td>
   <% if t.assignment %>
     <%= t.assignment.user.display_name %>
-  <% elsif t.status == "open" %>
+  <% elsif t.status == "open" && project.managers_plus.exclude?(current_user)%>
     <%= form_with model: assignment, url: '/assignments' do |f| %>
       <%= f.hidden_field :task_id, value: t.id %>
       <%= f.collection_select :user_id, collaborators, :id, :first_name %>
