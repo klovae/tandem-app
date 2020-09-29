@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+  before_action :confirm_manager_or_owner
 
   def create
     @assignment = Assignment.create(assignment_params)

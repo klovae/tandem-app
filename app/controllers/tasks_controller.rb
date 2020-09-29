@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :confirm_owner, only: [:destroy]
+  before_action :confirm_manager_or_owner, only: [:new, :create]
   
   def index
     #needs to work on its own and with a nested route

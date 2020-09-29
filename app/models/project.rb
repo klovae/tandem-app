@@ -18,6 +18,14 @@ class Project < ApplicationRecord
     owners
   end
 
+  def managers_plus
+    managers_plus = []
+    self.permissions.where(access_level: "owner").or(self.permissions.where(access_level: "manager")).each do |plus|
+      managers_plus << plus.user
+    end
+    managers_plus
+  end
+
   def verify_owner(user)
     self.owners.include?(user)
   end

@@ -4,7 +4,15 @@
 <ul>
 <li>Access Level: <%= @permission.access_level %></li>
 <li>Email: <%= @user.email %></li>
-<li>Added by <%= @permission.creator.full_name %> on <%= @permission.created_at.strftime("%B %-d, %Y") %></li>
-
+<% if @permission.creator == @user %>
+  <li>Created <%= @project.title %> on <%= @permission.created_at.strftime("%B %-d, %Y") %></li>
+<% else %>
+  <li>Added by <%= @permission.creator.full_name %> on <%= @permission.created_at.strftime("%B %-d, %Y") %></li>
+<% end %>
 </ul>
-<h3>Form</h3>
+
+<h3>Update Access Level</h3>
+<%= form_with(model: @permission, url: [@project, @permission], local: true) do |f| %>
+<%= f.select :access_level, ["owner", "manager", "contributor"] %>
+<%= f.submit "Update" %>
+<% end %>

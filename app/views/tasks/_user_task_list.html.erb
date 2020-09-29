@@ -1,17 +1,19 @@
 <td>
   <div class="icon-container">
     <%# task complete button %>
-    <%= render partial: '/tasks/complete_button', locals: { task: t } %>
+    <%= render partial: '/tasks/complete_button', locals: { task: t, project: t.project } %>
   </div>
 </td>
 
 <td>
   <div class="icon-container">
-    <%= t.content %>
-    <%# task edit button %>
-    <%= render partial: '/tasks/edit_button', locals: { task: t }%>
-    <%# task delete button %>
-    <%= render partial: '/tasks/delete_button', locals: { task: t, project: t.project }%>
+    <% unless t.project.managers_plus.exclude?(current_user) %>
+      <%= t.content %>
+      <%# task edit button %>
+      <%= render partial: '/tasks/edit_button', locals: { task: t } %>
+      <%# task delete button %>
+      <%= render partial: '/tasks/delete_button', locals: { task: t, project: t.project }%>
+    <% end %>
   </div>
 </td>
 

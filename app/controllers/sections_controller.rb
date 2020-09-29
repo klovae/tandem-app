@@ -1,4 +1,5 @@
 class SectionsController < ApplicationController
+  before_action :confirm_manager_or_owner
 
   def index
     @new_section = Section.new

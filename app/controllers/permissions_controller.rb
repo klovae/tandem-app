@@ -42,7 +42,7 @@ class PermissionsController < ApplicationController
   def update
     @permission = Permission.find_by(id: params[:id])
     @permission.update(permissions_params)
-    redirect_to project_path(@permission.project)
+    redirect_to project_permissions_path(@permission.project)
   end
 
   def destroy

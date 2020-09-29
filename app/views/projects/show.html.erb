@@ -10,11 +10,11 @@
 <% end %>
  — <%= link_to "View and add collaborators", project_permissions_path(@project) %>
 
-<p>Due date: <%= @project.human_time %> — <%= link_to "Edit project details", edit_project_path(@project) %></p>
+<p>Due date: <%= @project.human_time %><% if @project.managers_plus.include?(current_user) %> — <%= link_to "Edit project details", edit_project_path(@project) %></p>
 
-<h3><%= link_to "Create and edit sections", project_sections_path(@project) %></h3>
+<h3><%= link_to "Create and edit sections", project_sections_path(@project) %></h3><% end %>
 
-<h2>Tasks <%= link_to new_project_task_path(@project) do %><div class="add inline-icon icon-small"></div><% end %></h2>
+<h2>Tasks <% unless @project.managers_plus.exclude?(current_user) %><%= link_to new_project_task_path(@project) do %><div class="add inline-icon icon-small"></div><% end %><% end %></h2>
 
 <% if @loose_tasks %>
 
@@ -43,7 +43,7 @@
 <% end %>
 
 <% @sections.each do |section| %>
-  <h3><%= section.name %> <%= link_to new_project_section_task_path(@project, section) do %><div class="add icon-small inline-icon"></div><% end %></h3>
+  <h3><%= section.name %> <% unless @project.managers_plus.exclude?(current_user) %><%= link_to new_project_section_task_path(@project, section) do %><div class="add icon-small inline-icon"></div><% end %><% end %></h3>
 
     <% if section.tasks %>
 

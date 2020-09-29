@@ -12,10 +12,12 @@
 <td>
   <div class="icon-container">
     <%= t.content %>
-    <%# task edit button %>
-    <%= render partial: '/tasks/edit_button', locals: { task: t }%>
-    <%# task delete button %>
-    <%= render partial: '/tasks/delete_button', locals: { task: t, project: project } %>
+    <% unless project.managers_plus.exclude?(current_user) %>
+      <%# task edit button %>
+      <%= render partial: '/tasks/edit_button', locals: { task: t, project: project }%>
+      <%# task delete button %>
+      <%= render partial: '/tasks/delete_button', locals: { task: t, project: project } %>
+    <% end %>
   </div>
 </td>
 
