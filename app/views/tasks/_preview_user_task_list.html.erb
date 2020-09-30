@@ -1,0 +1,15 @@
+<td>
+  <div class="icon-container">
+   <%= t.content %>
+  </div>
+</td>
+
+<td>
+  <%= link_to t.project.title, project_path(t.project) %> 
+</td>
+
+<td>
+<% if t.deadline %>
+  <%= t.human_time%>
+<% end %>
+</td>

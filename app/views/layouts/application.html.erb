@@ -20,6 +20,7 @@
           <% if current_user %>
             <h3>LOGGED IN AS<br><strong><%= current_user.full_name.upcase %></strong></h3>
             
+            <div><%= link_to "Home", home_path %>
             <div><%= link_to "My Tasks", mytasks_path %></div>
             <div class="line"> </div>
             <h4>PROJECTS</h4>

@@ -19,7 +19,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user_projects = current_user.user_projects
+    @tasks = Assignment.user_list(current_user)[0..9]
+    invites = current_user.permissions.where(accepted: false)
+    if invites.present?
+      @invitations = invites
+    end
   end
 
   def edit

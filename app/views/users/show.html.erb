@@ -1,0 +1,51 @@
+<h1>Home Base</h1>
+
+<%= render partial: '/layouts/flash_message_center' %>
+
+<% if @invitations %>
+<h2>You have <%= pluralize(@invitations.count, "invitation")%> to join a project!</h2>
+
+  <% @invitations.each do |i| %>
+
+    <h3><%= i.project.title %></h3>
+    <p>Invited to join by <%= i.creator.full_name %></p>
+
+    <p>You have been given access level: <%= i.access_level.titlecase %></p>
+
+    <p>Click to accept this invitation:</p>
+
+    <%= form_with(model: i, url: [i.project, i]) do |f| %>
+    <%= f.hidden_field :accepted, value: true %>
+    <%= f.submit "Accept Invitation" %>
+    <% end %>
+
+  <% end %>
+
+<% end %>
+
+<h2 class="title">Your Projects</h2>
+<p><%= link_to "Create a new project", new_project_path %></p>
+
+<%= render partial: '/projects/project_list', locals: {user_projects: @user_projects} %>
+
+
+<h2 class="title">What's Happening</h2>
+<p class="description">Your nearest upcoming deadlines</p>
+
+<p>Check off your open tasks at <%= link_to "My Tasks", mytasks_path %></p>
+
+<table>
+<tr>
+<th>Task</th>
+<th>Project</th>
+<th>Deadline</th>
+</tr>
+
+<% @tasks.each do |t| %>
+  <tr>
+    <%= render partial: '/tasks/preview_user_task_list', locals: { t: t } %>
+  </tr>
+<% end %>
+
+</table>
+

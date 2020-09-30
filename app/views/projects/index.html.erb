@@ -1,39 +1,6 @@
-<h1>Your Projects</h1>
-<table>
-<th>
-Project
-</th>
-<th>
-Description
-</th>
-<th>
-Deadline
-</th>
-<th>
-Role
-</th>
-<% @user_projects.each do |project| %>
-  <tr>
-  <td>
-  <strong><%= link_to project[0].title, project_path(project[0]) %></strong>
-  </td>
+<h1 class="title">Your Projects</h1>
 
-  <td>
-  <em><%= project[0].description %></em>
-  </td>
-  
-  <td>
-  <%= project[0].human_time %>
-  </td>
-  
-  <td>
-  <%= project[1].titlecase %>  
-  </td>
-
-  </tr>
-
-<% end %>
-</table>
+<%= render partial: 'project_list', locals: {user_projects: @user_projects} %>
 
 <p>
 <%= link_to "Create a new project", new_project_path %>

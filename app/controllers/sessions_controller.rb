@@ -16,14 +16,14 @@ class SessionsController < ApplicationController
 
       session[:user_id] = @user.id
       flash[:success] = "Welcome, #{current_user.first_name}!"
-      redirect_to welcome_path
+      redirect_to home_path
 
     else
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         flash[:success] = "Welcome, #{current_user.first_name}!"
-        redirect_to welcome_path
+        redirect_to home_path
       else
         flash.now[:error] = "Sorry, your username and/or password is not correct"
         render :new
