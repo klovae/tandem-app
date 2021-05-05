@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
         session[:user_id] = @user.id
         flash[:success] = "Account created successfully. Welcome to Tandem!"
-        redirect_to welcome_path
+        redirect_to home_path
     else
         flash.now[:errors] = @user.errors.full_messages
         render :new
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:success] = "Your information has been updated."
-      redirect_to welcome_path
+      redirect_to home_path
     else
       flash.now[:errors] = @user.errors.full_messages
       render :edit
